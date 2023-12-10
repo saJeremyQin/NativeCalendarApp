@@ -25,4 +25,9 @@ RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(getName)
 {
   return [[UIDevice currentDevice] name];
 }
+
+- (NSDictionary *)constantsToExport
+{
+ return @{ @"DEFAULT_EVENT_NAME": @"Constant from Native-iOS" };
+}
 @end

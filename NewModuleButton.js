@@ -1,22 +1,26 @@
-import React from 'react';
-import { NativeModules, Button} from 'react-native';
-// const {CalendarModule} = NativeModules;
+import React, { useState } from 'react';
+import { NativeModules, View, Button} from 'react-native';
 import NativeCalendarModule from './NativeCalendarModule';
 
 const NewModuleButton = () => {
+  const {DEFAULT_EVENT_NAME} = NativeCalendarModule.getConstants();
+  const [buttonTitle, setButtonTitle] = useState("Click to invoke getConstants!");
+  
   const onPress = () => {
-    // console.log('We will invoke the native module here!');
-    // CalendarModule.createCalendarEvent('testName', 'testLocation');
-    NativeCalendarModule.createCalendarEvent("foo","bar");
+    // NativeCalendarModule.createCalendarEvent("foo","bar");
+    setButtonTitle(DEFAULT_EVENT_NAME);
   };
 
   return (
-    <Button
-      title="Click to invoke your native module!"
-      color="#841584"
-      onPress={onPress}
-    />
-  );
+    <View style={{ backgroundColor: "green" }}>
+      <Button
+        title={buttonTitle}
+        color="#841584"
+        onPress={onPress}
+        style={{ fontsize:16 }}
+      />
+    </View>
+   );
 };
 
 export default NewModuleButton;
